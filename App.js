@@ -1,11 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {/* O WebView carrega a URL passada no "uri" */}
+      <WebView 
+        source={{ uri: 'https://fatecferraz.edu.br/' }} 
+        style={styles.webview}
+      />
     </View>
   );
 }
@@ -13,8 +17,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // O marginTop afasta o site do topo da tela para não ficar por baixo 
+    // da barra de bateria/sinal do celular (status bar)
+    marginTop: 40, 
   },
+  webview: {
+    flex: 1,
+  }
 });
